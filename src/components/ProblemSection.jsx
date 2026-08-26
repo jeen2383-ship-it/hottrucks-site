@@ -100,11 +100,11 @@ export default function ProblemSection() {
               key={s.key}
               className={'rounded-card overflow-hidden border border-mute/20 bg-canvas-soft flex items-center ' + (s.reverse ? 'flex-row-reverse' : 'flex-row')}
             >
-              <div className="shrink-0 self-stretch bg-canvas-soft w-24 sm:w-36">
+              <div className="relative overflow-hidden shrink-0 self-stretch bg-canvas-soft w-24 sm:w-36">
                 <img
                   src={s.image}
                   alt={s.emphasis}
-                  className="h-full w-full object-contain object-bottom"
+                  className="absolute top-[10px] left-[5px] h-[calc(100%-10px)] w-auto"
                 />
               </div>
               <div className="flex-1 pt-4 pr-4 pb-4 pl-8 sm:pt-5 sm:pr-5 sm:pb-5 sm:pl-10 flex flex-col justify-center">
