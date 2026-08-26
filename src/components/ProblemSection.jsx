@@ -12,7 +12,7 @@ const stages = [
     reverse: false,
     imgLeft: 7,
     imgTop: 20,
-    imgScaleX: 1.15,
+    imgWidth: 110,
   },
   {
     key: 'reality',
@@ -22,7 +22,7 @@ const stages = [
     points: ['인력 부족', '예산 제한', '현행 업무 과중'],
     reverse: false,
     imgTop: 7,
-    imgScale: 1.2,
+    imgHeight: 110,
   },
   {
     key: 'limit',
@@ -115,13 +115,14 @@ export default function ProblemSection() {
                   style={{
                     top: (s.imgTop ?? 10) + 'px',
                     left: (s.imgLeft ?? 5) + 'px',
-                    height: `calc(100% - ${s.imgTop ?? 10}px)`,
+                    height: s.imgHeight ? s.imgHeight + 'px' : `calc(100% - ${s.imgTop ?? 10}px)`,
+                    width: s.imgWidth ? s.imgWidth + 'px' : 'auto',
                     transform: `scale(${s.imgScaleX ?? s.imgScale ?? 1}, ${s.imgScaleY ?? s.imgScale ?? 1})`,
                     transformOrigin: 'top left',
                   }}
                 />
               </div>
-              <div className="flex-1 pt-4 pr-4 pb-4 pl-8 sm:pt-5 sm:pr-5 sm:pb-5 sm:pl-10 flex flex-col justify-center">
+              <div className="flex-1 pt-4 pr-4 pb-4 pl-5 sm:pt-5 sm:pr-5 sm:pb-5 sm:pl-6 flex flex-col justify-center">
                 <h3
                   className={
                     'font-bold text-base sm:text-lg text-ink leading-snug relative z-10' +
