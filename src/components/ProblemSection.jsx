@@ -162,7 +162,7 @@ export default function ProblemSection() {
           <h3 className="mt-3.5 text-white font-extrabold text-xl sm:text-2xl leading-tight">
             <span ref={logoTextRef} className="inline-block">복지도, 예산도, 행정도</span>
             <br />
-            군부대 행사엔 <span className="text-yellow-400">핫트럭스</span>가 정답입니다
+            군부대 행사엔 <span className="text-primary bg-yellow-400 px-1.5 rounded">핫트럭스</span>가 정답입니다
           </h3>
           <div className="mt-6 flex flex-wrap justify-center gap-2">
             {solutionBadges.map((b) => (
