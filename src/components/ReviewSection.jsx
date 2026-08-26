@@ -72,10 +72,10 @@ function ReviewCard({ r }) {
       }
     >
       <div className="h-full rounded-card overflow-hidden border border-mute/20 bg-canvas shadow-soft flex flex-col">
-        <img src={r.photo} alt={r.author} className="w-full h-40 sm:h-48 object-cover" />
+        <img src={r.photo} alt={r.author} className="w-full h-40 sm:h-48 object-cover shrink-0" />
         <div className="p-4 flex-1 flex flex-col">
-          <p className="text-body text-sm leading-relaxed line-clamp-6">{r.text}</p>
-          <p className="mt-3 text-ink text-xs font-bold text-right">- {r.author}</p>
+          <p className="text-body text-sm leading-relaxed">{r.text}</p>
+          <p className="mt-auto pt-3 text-ink text-xs font-bold text-right">- {r.author}</p>
         </div>
       </div>
     </div>
@@ -83,16 +83,44 @@ function ReviewCard({ r }) {
 }
 
 export default function ReviewSection() {
+  const trackRef = useRef(null)
+  const drag = useRef({ active: false, startX: 0, startScroll: 0, moved: false })
+
+  const onPointerDown = (e) => {
+    const el = trackRef.current
+    if (!el) return
+    drag.current = { active: true, startX: e.clientX, startScroll: el.scrollLeft, moved: false }
+    el.setPointerCapture?.(e.pointerId)
+  }
+  const onPointerMove = (e) => {
+    const el = trackRef.current
+    if (!el || !drag.current.active) return
+    const dx = e.clientX - drag.current.startX
+    if (Math.abs(dx) > 3) drag.current.moved = true
+    el.scrollLeft = drag.current.startScroll - dx
+  }
+  const endDrag = () => {
+    drag.current.active = false
+  }
+
   return (
     <section className="bg-canvas-soft py-16 px-4 sm:px-6 overflow-hidden">
       <div className="mx-auto max-w-6xl">
         <span className="text-primary text-xs font-extrabold tracking-widest uppercase">Review</span>
         <h2 className="mt-2 text-ink font-extrabold text-2xl sm:text-4xl leading-tight">
-          핫트럭스를 이용해 보신 분들의 후기입니다
+          후기를 확인해보세요!
         </h2>
       </div>
 
-      <div className="mt-8 flex gap-3 overflow-x-auto snap-x snap-mandatory px-4 sm:px-6 pb-2 no-scrollbar">
+      <div
+        ref={trackRef}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={endDrag}
+        onPointerLeave={endDrag}
+        onPointerCancel={endDrag}
+        className="mt-8 flex gap-3 overflow-x-auto overscroll-x-contain touch-pan-x snap-x snap-mandatory px-4 sm:px-6 pb-2 no-scrollbar cursor-grab active:cursor-grabbing select-none"
+      >
         {reviews.map((r, i) => (
           <ReviewCard key={i} r={r} />
         ))}
