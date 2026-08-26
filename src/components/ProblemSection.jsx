@@ -147,7 +147,7 @@ export default function ProblemSection() {
         </div>
 
         {/* 핫트럭스 = 정답 클로징 섹션 (박스 없음) */}
-        <div className="mt-12 text-center">
+        <RevealCard className="mt-12 text-center">
           <div
             className="mx-auto rounded-full bg-white flex items-center justify-center shadow-soft"
             style={{ width: logoSize, height: logoSize }}
@@ -156,7 +156,7 @@ export default function ProblemSection() {
               src="/hottrucks-logo-color.webp"
               alt="HOTTRUCKS"
               className="object-contain"
-              style={{ width: '78%', height: '78%' }}
+              style={{ width: '65%', height: '65%' }}
             />
           </div>
           <h3 className="mt-3.5 text-white font-extrabold text-xl sm:text-2xl leading-tight">
@@ -171,7 +171,7 @@ export default function ProblemSection() {
               </span>
             ))}
           </div>
-        </div>
+        </RevealCard>
       </div>
     </section>
   )
