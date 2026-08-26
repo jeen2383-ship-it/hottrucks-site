@@ -22,7 +22,7 @@ const stages = [
     lineBreak: true,
     points: ['인력 부족', '예산 제한', '현행 업무 과중'],
     reverse: false,
-    imgTop: 7,
+    imgTop: 20,
   },
   {
     key: 'limit',
