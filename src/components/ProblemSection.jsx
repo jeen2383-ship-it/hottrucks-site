@@ -156,7 +156,7 @@ export default function ProblemSection() {
               src="/hottrucks-logo-color.webp"
               alt="HOTTRUCKS"
               className="object-contain"
-              style={{ width: '65%', height: '65%' }}
+              style={{ width: '68%', height: '68%', marginTop: '-3px' }}
             />
           </div>
           <h3 className="mt-3.5 text-white font-extrabold text-xl sm:text-2xl leading-tight">
