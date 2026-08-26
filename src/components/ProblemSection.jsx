@@ -107,7 +107,7 @@ export default function ProblemSection() {
               key={s.key}
               className={'rounded-card overflow-hidden border border-mute/20 bg-canvas-soft flex items-center ' + (s.reverse ? 'flex-row-reverse' : 'flex-row')}
             >
-              <div className="relative overflow-hidden shrink-0 self-stretch bg-canvas-soft w-[110px]">
+              <div className="relative overflow-hidden shrink-0 self-stretch bg-canvas-soft w-[120px]">
                 <img
                   src={s.image}
                   alt={s.emphasis}
