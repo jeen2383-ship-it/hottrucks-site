@@ -231,8 +231,32 @@ await fetch('https://ntfy.sh/', {
 
 ## 9. 다음에 이어서 할 만한 작업 후보
 
-- Netlify 크레딧 이슈 해결 후 최신 코드로 재배포
+- ~~Netlify 크레딧 이슈 해결 후 최신 코드로 재배포~~ → 10절 참고, Netlify 자체를 떠나기로 결정함
 - blog-inquiry 페이지들을 정식 커스텀 도메인/서브도메인으로 정리
 - QuoteForm과 blog-inquiry의 ntfy 발행 방식 통일(JSON 방식으로)
 - 7번째 갤러리 사진 추가(사용자가 재전송하면)
 - MenuSection 최종 카피 확정 및 재검증
+- 견적 폼(ntfy 푸시 알림만 존재, 영구 기록 없음) 리드 유실 위험 — Google Sheets 웹훅 등으로 이중 기록 추가 고려
+- QuoteForm.jsx `handleSubmit`의 폰번호 형식 검증(현재는 비어있는지만 체크)
+
+---
+
+## 10. Claude Code 세션에서 진행한 작업 (Netlify → Cloudflare Pages 이전 준비)
+
+**배경**: Netlify 무료 플랜이 "크레딧 통합제"로 바뀌면서, 이번 달 크레딧을 다 써서 수정/재배포가 아예 막힘. 사용자가 Netlify 이탈을 요청함 → Cloudflare Pages로 이전하기로 결정(트래픽/빌드 크레딧 걱정이 구조적으로 없고, blog-inquiry가 이미 Cloudflare에 있어 계정 재사용 가능).
+
+**이번 세션에서 로컬 코드에 실제로 반영한 변경사항**:
+1. **이미지 전량 WebP 변환**: `public/` 총 용량 6.9MB → 1.1MB (~81%↓). 원본 PNG/JPG는 삭제하고 JSX의 `src` 경로를 전부 `.webp`로 교체함(Hero, TrustSection, ProblemSection x4, Footer, GallerySection x6).
+2. **파비콘 신설**: 기존엔 favicon으로 1.46MB짜리 마스터 로고 원본을 그대로 썼음 → 180×180 `public/favicon.png` 새로 생성, `index.html` 링크 교체.
+3. **미사용/원본 자산 분리**: `founder.png`(구버전, 미사용), `hero-food.jpg`(미사용), `hottrucks-logo.png`(마스터 원본, favicon 생성 후 코드에서 미참조)는 `assets-archive/`로 이동 — `public/` 밖이라 빌드에 포함 안 됨, 그러나 파일 자체는 보존됨.
+4. **OG/Twitter 메타태그 추가**: `index.html`에 og:title/description/image/url, twitter:card 추가. **`og:image`/`og:url`에 임시로 `https://hottrucks.pages.dev/`를 박아뒀음 — 실제 Cloudflare Pages 배포 후 확정된 도메인으로 반드시 교체해야 함** (커스텀 도메인 연결 시엔 그 도메인으로).
+5. **폰트 경량화**: `pretendard/dist/web/static/pretendard.css`(9개 굵기 × woff+woff2 = 18개 파일, 17MB) → `pretendard/dist/web/variable/pretendardvariable.css`(가변 폰트 1개 파일, 2MB)로 교체. `tailwind.config.js`와 `src/index.css`의 `font-family` 둘 다 `'Pretendard Variable'`을 최우선으로 넣어야 실제로 로드됨 — **`src/index.css`의 `body` 셀렉터에 하드코딩된 `font-family`가 Tailwind 설정보다 우선 적용되는 함정이 있었으니, 폰트 관련 재작업 시 이 두 곳을 같이 확인할 것.**
+6. **`.gitignore` 갱신**: 프로젝트 루트에 흩어져 있던 카카오톡 캡처/ChatGPT 생성 이미지 등(`KakaoTalk_*.jpg/png`, `ChatGPT Image *.png`, `hottrucks logo.png`) — 사이트에서 실제로 안 쓰이고 개인정보(카톡 대화 캡처 등) 포함 가능성이 있어 저장소 추적에서 제외함. 파일 자체는 로컬에 그대로 있음, git에만 안 올라감. 루트에 섞여 있던 빈 파일 `npm run build`(0바이트, 오작동으로 생성된 것으로 추정)도 같은 방식으로 제외.
+7. **`npm run build` 로컬 검증 완료**: dist 총량 18MB → 3.5MB. `npm run preview`로 실제 브라우저 렌더링/네트워크 요청/폰트 로드 상태까지 확인함(콘솔 에러 없음, 이미지 전부 200, 폰트 `document.fonts` status "loaded" 확인).
+8. **git 저장소 최초 생성**: 이 프로젝트에 git이 전혀 연결 안 되어 있었음 → `git init` 후 위 변경사항을 첫 커밋으로 기록함. 원격(GitHub) 연결은 아직 안 함.
+
+**아직 사용자가 직접 해야 하는 것 (로그인이 필요해서 Claude가 대신 못 함)**:
+1. GitHub에 새 리포지토리 생성 후 이 로컬 프로젝트를 push
+2. Cloudflare Pages 대시보드에서 그 리포지토리 연결 — 빌드 설정: **빌드 명령어 `npm run build`, 출력 디렉터리 `dist`**
+3. 배포 완료 후 실제 URL(`*.pages.dev` 또는 연결한 커스텀 도메인)을 확인해서 `index.html`의 `og:image`/`og:url` 자리표시자(`https://hottrucks.pages.dev/`)를 실제 값으로 교체
+4. (선택) Netlify 프로젝트는 완전히 이전 확인 후 삭제/방치
