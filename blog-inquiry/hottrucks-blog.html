@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>핫트럭스 문의하기</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Malgun Gothic", sans-serif;
+    background: #F6F1EE;
+    color: #161211;
+    padding: 24px 16px 60px;
+  }
+  .wrap { max-width: 480px; margin: 0 auto; }
+  .badge {
+    color: #D91E24;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  h1 {
+    margin: 8px 0 6px;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.3;
+  }
+  p.desc {
+    margin: 0 0 28px;
+    color: #6B6663;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  form { display: flex; flex-direction: column; gap: 12px; }
+  input, textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid #E5DCD6;
+    background: #fff;
+    font-size: 15px;
+    font-family: inherit;
+    color: #161211;
+  }
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #D91E24;
+  }
+  textarea { min-height: 110px; resize: vertical; }
+  button {
+    margin-top: 6px;
+    padding: 16px;
+    border: none;
+    border-radius: 999px;
+    background: #D91E24;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  button:active { transform: scale(0.97); }
+  .error { color: #D91E24; font-size: 13px; font-weight: 600; margin: 0; }
+  .success {
+    text-align: center;
+    padding: 40px 0;
+  }
+  .success .icon {
+    width: 56px; height: 56px; border-radius: 999px;
+    background: #D91E24; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px; font-size: 26px; font-weight: 800;
+  }
+  .success h2 { font-size: 20px; margin: 0 0 10px; }
+  .success p { color: #6B6663; font-size: 14px; line-height: 1.6; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div id="formView">
+      <span class="badge">HOTTRUCKS</span>
+      <h1>핫트럭스 문의하기</h1>
+      <p class="desc">아래 내용을 남겨주시면<br />빠르게 확인 후 연락드리겠습니다.</p>
+      <form id="inquiryForm">
+        <input type="text" id="region" placeholder="지역 및 사단 (예: 강원도 인제군 00사단)" required />
+        <input type="text" id="position" placeholder="직책 (예: 인사과장)" required />
+        <input type="tel" id="contact" placeholder="연락처 (예: 010-0000-0000)" required />
+        <input type="text" id="eventType" placeholder="행사 형태 (예: 부대개방행사)" required />
+        <input type="number" inputmode="numeric" min="1" id="headcount" placeholder="예상 인원 (예: 150)" required />
+        <textarea id="message" placeholder="문의 내용을 남겨주세요"></textarea>
+        <p class="error hidden" id="errorMsg">필수 항목을 모두 입력해 주세요.</p>
+        <button type="submit">문의하기</button>
+      </form>
+    </div>
+    <div id="successView" class="success hidden">
+      <div class="icon">✓</div>
+      <h2>문의가 접수되었습니다</h2>
+      <p>빠른 시일 내로 연락드리겠습니다.</p>
+    </div>
+  </div>
+
+<script>
+  const NTFY_TOPIC = "hottrucks-blog-inquiry-j2sy9sl5";
+  const form = document.getElementById("inquiryForm");
+  const errorMsg = document.getElementById("errorMsg");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const region = document.getElementById("region").value.trim();
+    const position = document.getElementById("position").value.trim();
+    const contact = document.getElementById("contact").value.trim();
+    const eventType = document.getElementById("eventType").value.trim();
+    const headcount = document.getElementById("headcount").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (!region || !position || !contact || !eventType || !headcount) {
+      errorMsg.classList.remove("hidden");
+      return;
+    }
+    errorMsg.classList.add("hidden");
+
+    try {
+      await fetch(`https://ntfy.sh/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          topic: NTFY_TOPIC,
+          title: "핫트럭스 블로그 문의",
+          priority: 4,
+          tags: ["bell"],
+          message:
+            `핫트럭스 블로그에서 새 문의가 들어왔어요!\n` +
+            `지역: ${region}\n` +
+            `직책: ${position}\n` +
+            `연락처: ${contact}\n` +
+            `행사형태: ${eventType}\n` +
+            `예상인원: ${headcount}명\n` +
+            `문의 내용: ${message || "(내용 없음)"}`
+        })
+      });
+    } catch (err) {
+      console.error("알림 전송 실패:", err);
+    }
+
+    document.getElementById("formView").classList.add("hidden");
+    document.getElementById("successView").classList.remove("hidden");
+  });
+</script>
+</body>
+</html>

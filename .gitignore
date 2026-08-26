@@ -1,0 +1,10 @@
+node_modules
+dist
+.DS_Store
+*.log
+
+# 루트에 흩어진 참고용 원본 사진(사이트에서 실제로 쓰이지 않음, 카톡 캡처 등 개인정보 포함 가능성 있어 저장소에는 올리지 않음)
+/*.png
+/*.jpg
+/*.jpeg
+npm run build
