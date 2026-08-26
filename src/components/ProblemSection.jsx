@@ -104,7 +104,7 @@ export default function ProblemSection() {
                 <img
                   src={s.image}
                   alt={s.emphasis}
-                  className="h-full w-full object-contain"
+                  className="h-full w-full object-contain object-bottom"
                 />
               </div>
               <div className="flex-1 pt-4 pr-4 pb-4 pl-8 sm:pt-5 sm:pr-5 sm:pb-5 sm:pl-10 flex flex-col justify-center">
