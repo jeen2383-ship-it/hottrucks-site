@@ -18,8 +18,8 @@ export default function App() {
         <ProblemSection />
         <ReviewSection />
         <WhySection />
-        <MenuSection />
         <ProcessSection />
+        <MenuSection />
         <TrustSection />
         <QuoteForm />
       </main>
