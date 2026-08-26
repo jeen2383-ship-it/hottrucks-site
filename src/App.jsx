@@ -15,8 +15,8 @@ export default function App() {
       <Header />
       <main>
         <Hero />
-        <ReviewSection />
         <ProblemSection />
+        <ReviewSection />
         <WhySection />
         <MenuSection />
         <ProcessSection />

@@ -17,8 +17,9 @@ const stages = [
   {
     key: 'reality',
     image: '/worried-soldier.webp',
-    prefix: '여건이 부족한 ',
+    prefix: '장병들이 원해도 여건이 부족한',
     emphasis: '부대 현실',
+    lineBreak: true,
     points: ['인력 부족', '예산 제한', '현행 업무 과중'],
     reverse: false,
     imgTop: 7,
@@ -162,7 +163,7 @@ export default function ProblemSection() {
           <h3 className="mt-3.5 text-white font-extrabold text-xl sm:text-2xl leading-[30px]">
             <span ref={logoTextRef} className="inline-block">복지도, 예산도, 행정도</span>
             <br />
-            군부대 행사엔 <span className="text-primary bg-yellow-300 px-1.5 rounded text-2xl sm:text-3xl">핫트럭스</span>가 정답입니다
+            군부대 행사엔 <span className="text-primary bg-yellow-300 px-1.5 rounded text-2xl sm:text-3xl">핫트럭스</span> 가 정답입니다
           </h3>
           <div className="mt-6 flex flex-wrap justify-center gap-2">
             {solutionBadges.map((b) => (
