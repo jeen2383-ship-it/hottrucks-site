@@ -148,12 +148,17 @@ export default function ProblemSection() {
 
         {/* 핫트럭스 = 정답 클로징 섹션 (박스 없음) */}
         <div className="mt-12 text-center">
-          <img
-            src="/hottrucks-logo-white.webp"
-            alt="HOTTRUCKS"
-            className="mx-auto object-contain"
+          <div
+            className="mx-auto rounded-full bg-white flex items-center justify-center shadow-soft"
             style={{ width: logoSize, height: logoSize }}
-          />
+          >
+            <img
+              src="/hottrucks-logo-color.webp"
+              alt="HOTTRUCKS"
+              className="object-contain"
+              style={{ width: '78%', height: '78%' }}
+            />
+          </div>
           <h3 className="mt-3.5 text-white font-extrabold text-xl sm:text-2xl leading-tight">
             <span ref={logoTextRef} className="inline-block">복지도, 예산도, 행정도</span>
             <br />
