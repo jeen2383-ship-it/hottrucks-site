@@ -72,7 +72,7 @@ function ReviewCard({ r }) {
       }
     >
       <div className="h-full rounded-card overflow-hidden border border-mute/20 bg-canvas shadow-soft flex flex-col">
-        <img src={r.photo} alt={r.author} className="w-full h-40 sm:h-48 object-cover shrink-0" />
+        <img src={r.photo} alt={r.author} className="w-full aspect-[4/3] object-cover shrink-0" />
         <div className="p-4 flex-1 flex flex-col">
           <p className="text-body text-sm leading-relaxed">{r.text}</p>
           <p className="mt-auto pt-3 text-ink text-xs font-bold text-right">- {r.author}</p>
