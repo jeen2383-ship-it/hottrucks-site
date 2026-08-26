@@ -10,6 +10,7 @@ const stages = [
     points: ['복지 기대치 상승', 'PX 보다도 배달음식 선호'],
     singleCol: true,
     reverse: false,
+    imgLeft: 7,
   },
   {
     key: 'reality',
@@ -18,6 +19,8 @@ const stages = [
     emphasis: '부대 현실',
     points: ['인력 부족', '예산 제한', '현행 업무 과중'],
     reverse: false,
+    imgTop: 7,
+    imgScale: 1.2,
   },
   {
     key: 'limit',
@@ -100,11 +103,18 @@ export default function ProblemSection() {
               key={s.key}
               className={'rounded-card overflow-hidden border border-mute/20 bg-canvas-soft flex items-center ' + (s.reverse ? 'flex-row-reverse' : 'flex-row')}
             >
-              <div className="relative overflow-hidden shrink-0 self-stretch bg-canvas-soft w-24 sm:w-36">
+              <div className="relative overflow-hidden shrink-0 self-stretch bg-canvas-soft w-[110px]">
                 <img
                   src={s.image}
                   alt={s.emphasis}
-                  className="absolute top-[10px] left-[5px] h-[calc(100%-10px)] w-auto"
+                  className="absolute w-auto"
+                  style={{
+                    top: (s.imgTop ?? 10) + 'px',
+                    left: (s.imgLeft ?? 5) + 'px',
+                    height: `calc(100% - ${s.imgTop ?? 10}px)`,
+                    transform: `scale(${s.imgScale ?? 1})`,
+                    transformOrigin: 'top left',
+                  }}
                 />
               </div>
               <div className="flex-1 pt-4 pr-4 pb-4 pl-8 sm:pt-5 sm:pr-5 sm:pb-5 sm:pl-10 flex flex-col justify-center">
