@@ -92,10 +92,10 @@ export default function ProblemSection() {
   }, [])
 
   return (
-    <section className="bg-ink py-16 px-4 sm:px-6">
+    <section className="bg-canvas-soft py-16 px-4 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <span className="text-primary text-xs font-extrabold tracking-widest uppercase">Why Needed</span>
-        <h2 className="mt-2 text-white font-extrabold text-2xl sm:text-4xl leading-tight">
+        <h2 className="mt-2 text-ink font-extrabold text-2xl sm:text-4xl leading-tight">
           체감형 복지는 원하는데,
           <br />
           현실은 녹록지 않습니다
@@ -105,9 +105,9 @@ export default function ProblemSection() {
           {stages.map((s) => (
             <RevealCard
               key={s.key}
-              className={'rounded-card overflow-hidden border border-mute/20 bg-canvas-soft flex items-center ' + (s.reverse ? 'flex-row-reverse' : 'flex-row')}
+              className={'rounded-card overflow-hidden border border-mute/20 bg-canvas flex items-center ' + (s.reverse ? 'flex-row-reverse' : 'flex-row')}
             >
-              <div className="relative overflow-hidden shrink-0 self-stretch bg-canvas-soft w-[120px]">
+              <div className="relative overflow-hidden shrink-0 self-stretch bg-canvas w-[120px]">
                 <img
                   src={s.image}
                   alt={s.emphasis}
@@ -159,14 +159,14 @@ export default function ProblemSection() {
               style={{ width: '68%', height: '68%', marginTop: '-3px' }}
             />
           </div>
-          <h3 className="mt-3.5 text-white font-extrabold text-xl sm:text-2xl leading-[30px]">
+          <h3 className="mt-3.5 text-ink font-extrabold text-xl sm:text-2xl leading-[30px]">
             <span ref={logoTextRef} className="inline-block">복지도, 예산도, 행정도</span>
             <br />
             군부대 행사엔 <span className="text-primary bg-yellow-300 px-1.5 rounded text-2xl sm:text-3xl">핫트럭스</span> 가 정답입니다
           </h3>
           <div className="mt-6 flex flex-wrap justify-center gap-2">
             {solutionBadges.map((b) => (
-              <span key={b} className="rounded-pill bg-white text-primary text-xs font-bold px-3.5 py-2 shadow-soft">
+              <span key={b} className="rounded-pill bg-canvas border border-mute/20 text-primary text-xs font-bold px-3.5 py-2 shadow-soft">
                 {b}
               </span>
             ))}

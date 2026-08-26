@@ -5,10 +5,10 @@ export default function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-ink/95 backdrop-blur-sm border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-canvas/95 backdrop-blur-sm border-b border-mute/20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 h-16 flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2">
-          <span className="text-white font-extrabold tracking-tight text-lg">HOTTRUCKS</span>
+          <span className="text-ink font-extrabold tracking-tight text-lg">HOTTRUCKS</span>
         </a>
         <a
           href="#quote-form"

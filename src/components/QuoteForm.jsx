@@ -54,13 +54,13 @@ export default function QuoteForm() {
 
   if (submitted) {
     return (
-      <section id="quote-form" className="bg-ink-soft py-16 px-4 sm:px-6">
+      <section id="quote-form" className="bg-canvas-soft py-16 px-4 sm:px-6">
         <div className="mx-auto max-w-xl text-center">
           <div className="mx-auto h-14 w-14 rounded-full bg-primary flex items-center justify-center text-white text-2xl font-bold">
             ✓
           </div>
-          <h2 className="mt-5 text-white font-extrabold text-2xl">신청이 접수되었습니다</h2>
-          <p className="mt-3 text-white/70 text-sm leading-relaxed">
+          <h2 className="mt-5 text-ink font-extrabold text-2xl">신청이 접수되었습니다</h2>
+          <p className="mt-3 text-body text-sm leading-relaxed">
             빠른 시일 내로 연락드리겠습니다.
           </p>
           <button
@@ -68,7 +68,7 @@ export default function QuoteForm() {
               setForm(initialForm)
               setSubmitted(false)
             }}
-            className="mt-6 rounded-pill border border-white/30 text-white text-sm font-bold px-6 py-3"
+            className="mt-6 rounded-pill border border-mute/30 text-ink text-sm font-bold px-6 py-3"
           >
             다시 신청하기
           </button>
@@ -78,10 +78,10 @@ export default function QuoteForm() {
   }
 
   return (
-    <section id="quote-form" className="bg-ink-soft py-16 px-4 sm:px-6">
+    <section id="quote-form" className="bg-canvas-soft py-16 px-4 sm:px-6">
       <div className="mx-auto max-w-xl">
         <span className="text-primary text-xs font-extrabold tracking-widest uppercase">Get a Quote</span>
-        <h2 className="mt-2 text-white font-extrabold text-2xl sm:text-4xl leading-tight">
+        <h2 className="mt-2 text-ink font-extrabold text-2xl sm:text-4xl leading-tight">
           무료 견적 신청
         </h2>
 
@@ -91,7 +91,7 @@ export default function QuoteForm() {
             value={form.region}
             onChange={handleChange('region')}
             placeholder="지역 및 사단 (예: 강원도 인제군 00사단)"
-            className="w-full rounded-card bg-white/5 border border-white/15 text-white placeholder-white/30 px-4 py-3.5 text-base focus:outline-none focus:border-primary"
+            className="w-full rounded-card bg-canvas border border-mute/30 text-ink placeholder-mute px-4 py-3.5 text-base focus:outline-none focus:border-primary"
           />
 
           <input
@@ -99,7 +99,7 @@ export default function QuoteForm() {
             value={form.position}
             onChange={handleChange('position')}
             placeholder="직책 (예: 인사과장)"
-            className="w-full rounded-card bg-white/5 border border-white/15 text-white placeholder-white/30 px-4 py-3.5 text-base focus:outline-none focus:border-primary"
+            className="w-full rounded-card bg-canvas border border-mute/30 text-ink placeholder-mute px-4 py-3.5 text-base focus:outline-none focus:border-primary"
           />
 
           <input
@@ -107,7 +107,7 @@ export default function QuoteForm() {
             value={form.contact}
             onChange={handleChange('contact')}
             placeholder="연락처 (예: 010-0000-0000)"
-            className="w-full rounded-card bg-white/5 border border-white/15 text-white placeholder-white/30 px-4 py-3.5 text-base focus:outline-none focus:border-primary"
+            className="w-full rounded-card bg-canvas border border-mute/30 text-ink placeholder-mute px-4 py-3.5 text-base focus:outline-none focus:border-primary"
           />
 
           <input
@@ -115,7 +115,7 @@ export default function QuoteForm() {
             value={form.eventType}
             onChange={handleChange('eventType')}
             placeholder="행사 형태 (예: 부대개방행사)"
-            className="w-full rounded-card bg-white/5 border border-white/15 text-white placeholder-white/30 px-4 py-3.5 text-base focus:outline-none focus:border-primary"
+            className="w-full rounded-card bg-canvas border border-mute/30 text-ink placeholder-mute px-4 py-3.5 text-base focus:outline-none focus:border-primary"
           />
 
           <input
@@ -125,7 +125,7 @@ export default function QuoteForm() {
             value={form.headcount}
             onChange={handleChange('headcount')}
             placeholder="예상 인원 (예: 150)"
-            className="w-full rounded-card bg-white/5 border border-white/15 text-white placeholder-white/30 px-4 py-3.5 text-base focus:outline-none focus:border-primary"
+            className="w-full rounded-card bg-canvas border border-mute/30 text-ink placeholder-mute px-4 py-3.5 text-base focus:outline-none focus:border-primary"
           />
 
           {error && <p className="text-primary text-sm font-semibold">{error}</p>}

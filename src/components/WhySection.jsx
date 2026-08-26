@@ -39,7 +39,7 @@ export default function WhySection() {
   }, [])
 
   return (
-    <section className="bg-canvas py-16 px-4 sm:px-6">
+    <section className="bg-canvas-soft py-16 px-4 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <span className="text-primary text-xs font-extrabold tracking-widest uppercase">Hottrucks 소개</span>
         <h2 className="mt-2 text-ink font-extrabold text-2xl sm:text-4xl leading-tight">
@@ -56,7 +56,7 @@ export default function WhySection() {
             <div
               key={f.title}
               className={
-                'rounded-card bg-canvas-soft p-6 text-center transition-all duration-700 ease-out ' +
+                'rounded-card bg-canvas p-6 text-center transition-all duration-700 ease-out ' +
                 (visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8')
               }
               style={{ transitionDelay: visible ? `${i * 150}ms` : '0ms' }}

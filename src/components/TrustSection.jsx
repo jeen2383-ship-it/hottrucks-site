@@ -30,7 +30,7 @@ export default function TrustSection() {
           이 서비스를 기획하였습니다."
         </blockquote>
 
-        <div className="mt-6 rounded-card bg-canvas border border-mute/20 divide-y divide-mute/20 overflow-hidden">
+        <div className="mt-6 rounded-card bg-canvas-soft border border-mute/20 divide-y divide-mute/20 overflow-hidden">
           {career.map((c) => (
             <div key={c.label} className="flex items-center gap-1.5 px-3 py-2">
               <span className="shrink-0 w-14 flex justify-between">

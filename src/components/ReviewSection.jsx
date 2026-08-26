@@ -71,7 +71,7 @@ function ReviewCard({ r }) {
         (visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8')
       }
     >
-      <div className="h-full rounded-card overflow-hidden border border-mute/20 bg-canvas shadow-soft flex flex-col">
+      <div className="h-full rounded-card overflow-hidden border border-mute/20 bg-canvas-soft shadow-soft flex flex-col">
         <img src={r.photo} alt={r.author} className="w-full aspect-[4/3] object-cover shrink-0" />
         <div className="p-4 flex-1 flex flex-col">
           <p className="text-body text-sm leading-relaxed">{r.text}</p>
@@ -104,7 +104,7 @@ export default function ReviewSection() {
   }
 
   return (
-    <section className="bg-canvas-soft py-16 px-4 sm:px-6 overflow-hidden">
+    <section className="bg-canvas py-16 px-4 sm:px-6 overflow-hidden">
       <div className="mx-auto max-w-6xl">
         <span className="text-primary text-xs font-extrabold tracking-widest uppercase">Review</span>
         <h2 className="mt-2 text-ink font-extrabold text-2xl sm:text-4xl leading-tight">
