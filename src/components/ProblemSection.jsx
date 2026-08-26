@@ -23,7 +23,6 @@ const stages = [
     points: ['인력 부족', '예산 제한', '현행 업무 과중'],
     reverse: false,
     imgTop: 7,
-    imgHeight: 110,
   },
   {
     key: 'limit',
