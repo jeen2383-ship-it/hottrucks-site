@@ -22,11 +22,10 @@ const stages = [
   {
     key: 'limit',
     image: '/hotdog-guy.webp',
-    prefix: '푸드트럭을 부르려 해도..',
+    prefix: '푸드트럭을 부르려 해도',
     emphasis: '기존 푸드트럭 업체들의 한계',
     lineBreak: true,
     points: ['출장비 요구', '매출 보장 요구', '민원 소지 우려'],
-    fillImage: true,
     reverse: false,
   },
 ]
@@ -99,13 +98,13 @@ export default function ProblemSection() {
           {stages.map((s) => (
             <RevealCard
               key={s.key}
-              className={'rounded-card overflow-hidden border border-mute/20 bg-canvas-soft flex ' + (s.fillImage ? '' : 'items-center ') + (s.reverse ? 'flex-row-reverse' : 'flex-row')}
+              className={'rounded-card overflow-hidden border border-mute/20 bg-canvas-soft flex items-center ' + (s.reverse ? 'flex-row-reverse' : 'flex-row')}
             >
-              <div className={'shrink-0 bg-canvas-soft w-24 sm:w-36 ' + (s.fillImage ? 'self-stretch' : 'aspect-square')}>
+              <div className="shrink-0 bg-canvas-soft w-24 sm:w-36 aspect-square">
                 <img
                   src={s.image}
                   alt={s.emphasis}
-                  className={'h-full w-full ' + (s.fillImage ? 'object-cover object-top' : 'object-contain')}
+                  className="h-full w-full object-contain"
                 />
               </div>
               <div className="flex-1 pt-4 pr-4 pb-4 pl-8 sm:pt-5 sm:pr-5 sm:pb-5 sm:pl-10 flex flex-col justify-center">
