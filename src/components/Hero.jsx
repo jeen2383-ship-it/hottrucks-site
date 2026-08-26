@@ -6,9 +6,6 @@ export default function Hero() {
 
   return (
     <section id="top" className="relative bg-canvas pt-28 pb-16 px-4 sm:px-6 overflow-hidden">
-      {/* soft accent */}
-      <div className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
-
       <div className="relative mx-auto max-w-6xl">
         <h1 className="text-ink font-extrabold tracking-tight text-[2.3rem] leading-[1.25] sm:text-6xl sm:leading-[1.15]">
           부대 예산 걱정 없이
@@ -23,7 +20,7 @@ export default function Hero() {
           행사 취지에 맞는 푸드트럭을 매칭해 드립니다.
         </p>
 
-        <div className="mt-6 rounded-card overflow-hidden border border-mute/20">
+        <div className="mt-6 rounded-card overflow-hidden">
           <img src="/hero-truck.webp" alt="핫트럭스 푸드트럭" className="w-full h-auto object-cover" />
         </div>
 
