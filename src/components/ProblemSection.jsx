@@ -11,6 +11,8 @@ const stages = [
     singleCol: true,
     reverse: false,
     imgLeft: 7,
+    imgTop: 20,
+    imgScaleX: 1.15,
   },
   {
     key: 'reality',
@@ -30,6 +32,8 @@ const stages = [
     lineBreak: true,
     points: ['출장비 요구', '매출 보장 요구', '민원 소지 우려'],
     reverse: false,
+    imgTop: 20,
+    imgScaleX: 1.15,
   },
 ]
 
@@ -112,7 +116,7 @@ export default function ProblemSection() {
                     top: (s.imgTop ?? 10) + 'px',
                     left: (s.imgLeft ?? 5) + 'px',
                     height: `calc(100% - ${s.imgTop ?? 10}px)`,
-                    transform: `scale(${s.imgScale ?? 1})`,
+                    transform: `scale(${s.imgScaleX ?? s.imgScale ?? 1}, ${s.imgScaleY ?? s.imgScale ?? 1})`,
                     transformOrigin: 'top left',
                   }}
                 />
