@@ -24,26 +24,24 @@ const otherMenus = [
 
 function PhotoSlot({ label, src }) {
   return (
-    <div className="flex-1 aspect-[4/3] rounded-card bg-canvas-soft border border-dashed border-mute/40 flex flex-col items-center justify-center gap-1 overflow-hidden">
+    <div className="w-full aspect-[4/3] rounded-card bg-canvas-soft border border-dashed border-mute/40 flex flex-col items-center justify-center gap-1 overflow-hidden">
       {src ? (
         <img src={src} alt={label} className="w-full h-full object-cover" />
       ) : (
         <>
-          <span className="text-lg">📷</span>
-          <span className="text-mute text-[11px] font-semibold">{label} 준비중</span>
+          <span className="text-2xl">📷</span>
+          <span className="text-mute text-xs font-semibold">{label} 준비중</span>
         </>
       )}
     </div>
   )
 }
 
-function BestMenuCard({ item }) {
-  const [open, setOpen] = useState(false)
-
+function BestMenuCard({ item, open, onToggle }) {
   return (
     <button
       type="button"
-      onClick={() => setOpen((o) => !o)}
+      onClick={onToggle}
       className={
         'text-left rounded-card border p-4 transition-colors ' +
         (open ? 'bg-canvas border-primary/30' : 'bg-canvas border-mute/20')
@@ -62,7 +60,7 @@ function BestMenuCard({ item }) {
 
       {open && (
         <div className="mt-3 pt-3 border-t border-mute/15">
-          <div className="flex gap-2">
+          <div className="flex flex-col gap-2">
             <PhotoSlot label="트럭 사진" src={item.truckPhoto} />
             <PhotoSlot label="메뉴 사진" src={item.menuPhoto} />
           </div>
@@ -74,6 +72,8 @@ function BestMenuCard({ item }) {
 }
 
 export default function MenuSection() {
+  const [openKey, setOpenKey] = useState(null)
+
   return (
     <section className="bg-canvas-soft py-16 px-4 sm:px-6">
       <div className="mx-auto max-w-6xl">
@@ -89,7 +89,12 @@ export default function MenuSection() {
         <p className="mt-1 text-body text-xs">아이콘을 탭하면 트럭 사진 · 메뉴 사진 · 단가를 볼 수 있어요</p>
         <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-2.5">
           {bestMenus.map((item) => (
-            <BestMenuCard key={item.key} item={item} />
+            <BestMenuCard
+              key={item.key}
+              item={item}
+              open={openKey === item.key}
+              onToggle={() => setOpenKey((k) => (k === item.key ? null : item.key))}
+            />
           ))}
         </div>
 
