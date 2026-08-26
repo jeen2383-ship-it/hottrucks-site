@@ -8,7 +8,7 @@ const career = [
 
 export default function TrustSection() {
   return (
-    <section className="bg-canvas-soft py-16 px-4 sm:px-6">
+    <section className="bg-canvas py-16 px-4 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <span className="text-primary text-xs font-extrabold tracking-widest uppercase">Why Trust Us</span>
         <h2 className="mt-2 text-ink font-extrabold text-2xl sm:text-4xl leading-tight">

@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from 'react'
+
 const features = [
   {
     icon: '🎖️',
@@ -17,6 +19,25 @@ const features = [
 ]
 
 export default function WhySection() {
+  const gridRef = useRef(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const el = gridRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -40px 0px' }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section className="bg-canvas py-16 px-4 sm:px-6">
       <div className="mx-auto max-w-6xl">
@@ -30,9 +51,16 @@ export default function WhySection() {
           한 번에 관리하는 중개 서비스입니다.
         </p>
 
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {features.map((f) => (
-            <div key={f.title} className="rounded-card bg-canvas-soft p-6 text-center">
+        <div ref={gridRef} className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {features.map((f, i) => (
+            <div
+              key={f.title}
+              className={
+                'rounded-card bg-canvas-soft p-6 text-center transition-all duration-700 ease-out ' +
+                (visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8')
+              }
+              style={{ transitionDelay: visible ? `${i * 150}ms` : '0ms' }}
+            >
               <h3 className="text-ink font-bold text-lg">
                 <span className="mr-1.5">{f.icon}</span>
                 {f.title}
