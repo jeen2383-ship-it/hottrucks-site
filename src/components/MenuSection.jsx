@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
 const bestMenus = [
-  { key: 'coffee', name: '커피차', icon: '☕', price: '3,000~4,500원', truckPhoto: '/menu-trucks/truck-coffee.webp' },
+  { key: 'coffee', name: '커피차', icon: '🧋', price: '3,000~4,500원', truckPhoto: '/menu-trucks/truck-coffee.webp' },
   { key: 'snack', name: '간식차', icon: '🍿', price: '4,000~6,000원', truckPhoto: '/menu-trucks/truck-snack.webp' },
   { key: 'churros', name: '츄러스', icon: '🥨', price: '4,000~6,000원', truckPhoto: '/menu-trucks/truck-churros.webp' },
   { key: 'friedchicken', name: '닭강정', icon: '🍗', price: '10,000~15,000원', truckPhoto: '/menu-trucks/truck-friedchicken.webp' },
   { key: 'skewer', name: '닭꼬치', icon: '🍢', price: '3,000~5,000원', truckPhoto: '/menu-trucks/truck-skewer.webp' },
-  { key: 'streetfood', name: '분식', icon: '🍥', price: '3,000~7,000원', truckPhoto: '/menu-trucks/truck-streetfood.webp' },
+  { key: 'streetfood', name: '분식', icon: '🍤', price: '3,000~7,000원', truckPhoto: '/menu-trucks/truck-streetfood.webp' },
 ]
 
 const eventMenus = [
