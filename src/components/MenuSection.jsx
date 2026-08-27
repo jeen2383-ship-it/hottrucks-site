@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
 const bestMenus = [
-  { key: 'coffee', name: '커피차', icon: '☕', price: '3,000~4,500원', truckPhoto: null },
-  { key: 'snack', name: '간식차', icon: '🍿', price: '4,000~6,000원', truckPhoto: null },
-  { key: 'churros', name: '츄러스', icon: '🥨', price: '4,000~6,000원', truckPhoto: null },
-  { key: 'friedchicken', name: '닭강정', icon: '🍗', price: '10,000~15,000원', truckPhoto: null },
-  { key: 'skewer', name: '닭꼬치', icon: '🍢', price: '3,000~5,000원', truckPhoto: null },
-  { key: 'streetfood', name: '분식', icon: '🍥', price: '3,000~7,000원', truckPhoto: null },
+  { key: 'coffee', name: '커피차', icon: '☕', price: '3,000~4,500원', truckPhoto: '/menu-trucks/truck-coffee.webp' },
+  { key: 'snack', name: '간식차', icon: '🍿', price: '4,000~6,000원', truckPhoto: '/menu-trucks/truck-snack.webp' },
+  { key: 'churros', name: '츄러스', icon: '🥨', price: '4,000~6,000원', truckPhoto: '/menu-trucks/truck-churros.webp' },
+  { key: 'friedchicken', name: '닭강정', icon: '🍗', price: '10,000~15,000원', truckPhoto: '/menu-trucks/truck-friedchicken.webp' },
+  { key: 'skewer', name: '닭꼬치', icon: '🍢', price: '3,000~5,000원', truckPhoto: '/menu-trucks/truck-skewer.webp' },
+  { key: 'streetfood', name: '분식', icon: '🍥', price: '3,000~7,000원', truckPhoto: '/menu-trucks/truck-streetfood.webp' },
 ]
 
 const eventMenus = [
@@ -17,9 +17,9 @@ const eventMenus = [
 ]
 
 const otherMenus = [
-  '떡볶이', '튀김', '순대', '어묵', '염통꼬치', '회오리감자', '탕수육', '타코', '팟타이',
-  '츄러스', '꽈배기', '덮밥', '야끼소바', '오꼬노미야끼', '햄버거', '피자', '스테이크', '초밥',
-  '불초밥', '케밥', '퀘사디아', '뉴욕핫도그', '삼겹살', '닭발', '샌드위치', '와플', '빵류', '젤라또', '슬러시', '곱창', '타코야끼',
+  '염통꼬치', '탕수육', '타코', '팟타이',
+  '꽈배기', '덮밥', '야끼소바', '오꼬노미야끼', '햄버거', '피자', '스테이크', '초밥',
+  '불초밥', '케밥', '퀘사디아', '뉴욕핫도그', '삼겹살', '닭발', '샌드위치', '와플', '빵류', '젤라또', '슬러시', '곱창',
 ]
 
 function PhotoSlot({ label, src }) {
