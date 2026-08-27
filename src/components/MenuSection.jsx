@@ -42,11 +42,11 @@ function MenuIconButton({ item, active, onClick }) {
     <button
       type="button"
       onClick={onClick}
-      className="shrink-0 flex flex-col items-center gap-1.5 w-16"
+      className="shrink-0 flex flex-col items-center gap-1 w-[52px]"
     >
       <span
         className={
-          'h-12 w-12 rounded-full text-2xl flex items-center justify-center border-2 transition-colors ' +
+          'h-10 w-10 rounded-full text-xl flex items-center justify-center border-2 transition-colors ' +
           (active ? 'bg-primary/10 border-primary' : 'bg-canvas border-mute/20')
         }
       >
@@ -73,7 +73,7 @@ export default function MenuSection() {
 
         <p className="mt-8 text-ink font-bold text-sm">베스트 메뉴</p>
         <p className="mt-1 text-body text-xs">아이콘을 탭하면 트럭 사진과 단가를 볼 수 있어요</p>
-        <div className="mt-3 flex gap-3 overflow-x-auto no-scrollbar">
+        <div className="mt-3 flex gap-1.5 overflow-x-auto no-scrollbar">
           {bestMenus.map((item) => (
             <MenuIconButton
               key={item.key}
@@ -95,11 +95,11 @@ export default function MenuSection() {
         })()}
 
         <p className="mt-8 text-ink font-bold text-sm">그 외에도 다양한 메뉴가 준비되어 있습니다</p>
-        <div className="mt-3 flex flex-wrap gap-1.5">
+        <div className="mt-3 flex flex-wrap gap-1">
           {otherMenus.map((m) => (
             <span
               key={m}
-              className="rounded-pill bg-canvas border border-mute/20 text-body text-xs font-semibold px-3 py-1.5"
+              className="rounded-pill bg-canvas border border-mute/20 text-body text-[11px] font-semibold px-2 py-1"
             >
               {m}
             </span>

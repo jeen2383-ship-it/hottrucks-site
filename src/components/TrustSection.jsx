@@ -33,7 +33,7 @@ export default function TrustSection() {
         <div className="mt-6 rounded-card bg-canvas-soft border border-mute/20 divide-y divide-mute/20 overflow-hidden">
           {career.map((c) => (
             <div key={c.label} className="flex items-center gap-1.5 px-3 py-2">
-              <span className="shrink-0 w-14 flex justify-between">
+              <span className="shrink-0 w-12 flex justify-between">
                 {c.label.split('').map((ch, i) => (
                   <span key={i} className="text-mute text-[11px] font-bold">
                     {ch}
