@@ -37,36 +37,22 @@ function PhotoSlot({ label, src }) {
   )
 }
 
-function BestMenuCard({ item, open, onToggle }) {
+function MenuIconButton({ item, active, onClick }) {
   return (
     <button
       type="button"
-      onClick={onToggle}
-      className={
-        'text-left rounded-card border p-4 transition-colors ' +
-        (open ? 'bg-canvas border-primary/30' : 'bg-canvas border-mute/20')
-      }
+      onClick={onClick}
+      className="shrink-0 flex flex-col items-center gap-1.5 w-16"
     >
-      <div className="flex items-center gap-3">
-        <span className="shrink-0 h-11 w-11 rounded-full bg-primary/10 text-2xl flex items-center justify-center">
-          {item.icon}
-        </span>
-        <div className="flex-1">
-          <p className="text-ink font-bold text-sm">{item.name}</p>
-          <p className="text-mute text-xs">{open ? '접으려면 탭' : '탭해서 보기'}</p>
-        </div>
-        <span className={'text-mute text-xs transition-transform ' + (open ? 'rotate-180' : '')}>▾</span>
-      </div>
-
-      {open && (
-        <div className="mt-3 pt-3 border-t border-mute/15">
-          <div className="flex flex-col gap-2">
-            <PhotoSlot label="트럭 사진" src={item.truckPhoto} />
-            <PhotoSlot label="메뉴 사진" src={item.menuPhoto} />
-          </div>
-          <p className="mt-3 text-primary font-extrabold text-sm">{item.price}</p>
-        </div>
-      )}
+      <span
+        className={
+          'h-12 w-12 rounded-full text-2xl flex items-center justify-center border-2 transition-colors ' +
+          (active ? 'bg-primary/10 border-primary' : 'bg-canvas border-mute/20')
+        }
+      >
+        {item.icon}
+      </span>
+      <span className={'text-xs font-bold ' + (active ? 'text-primary' : 'text-ink')}>{item.name}</span>
     </button>
   )
 }
@@ -87,16 +73,29 @@ export default function MenuSection() {
 
         <p className="mt-8 text-ink font-bold text-sm">베스트 메뉴</p>
         <p className="mt-1 text-body text-xs">아이콘을 탭하면 트럭 사진 · 메뉴 사진 · 단가를 볼 수 있어요</p>
-        <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+        <div className="mt-3 flex gap-3 overflow-x-auto no-scrollbar">
           {bestMenus.map((item) => (
-            <BestMenuCard
+            <MenuIconButton
               key={item.key}
               item={item}
-              open={openKey === item.key}
-              onToggle={() => setOpenKey((k) => (k === item.key ? null : item.key))}
+              active={openKey === item.key}
+              onClick={() => setOpenKey((k) => (k === item.key ? null : item.key))}
             />
           ))}
         </div>
+
+        {openKey && (() => {
+          const item = bestMenus.find((m) => m.key === openKey)
+          return (
+            <div className="mt-3 rounded-card border border-primary/30 bg-canvas p-4">
+              <div className="flex flex-col gap-2">
+                <PhotoSlot label="트럭 사진" src={item.truckPhoto} />
+                <PhotoSlot label="메뉴 사진" src={item.menuPhoto} />
+              </div>
+              <p className="mt-3 text-primary font-extrabold text-sm">{item.name} · {item.price}</p>
+            </div>
+          )
+        })()}
 
         <p className="mt-8 text-ink font-bold text-sm">그 외에도 다양한 메뉴가 준비되어 있습니다</p>
         <div className="mt-3 flex flex-wrap gap-1.5">
