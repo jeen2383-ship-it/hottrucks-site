@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
 const bestMenus = [
-  { key: 'coffee', name: '커피차', icon: '☕', price: '4,000원~', truckPhoto: null, menuPhoto: null },
-  { key: 'snack', name: '간식차', icon: '🍿', price: '3,000원~', truckPhoto: null, menuPhoto: null },
-  { key: 'churros', name: '츄러스', icon: '🥨', price: '4,000원~', truckPhoto: null, menuPhoto: null },
-  { key: 'friedchicken', name: '닭강정', icon: '🍗', price: '8,000원~', truckPhoto: null, menuPhoto: null },
-  { key: 'skewer', name: '닭꼬치', icon: '🍢', price: '3,000원~', truckPhoto: null, menuPhoto: null },
-  { key: 'streetfood', name: '분식', icon: '🍥', price: '5,000원~', truckPhoto: null, menuPhoto: null },
+  { key: 'coffee', name: '커피차', icon: '☕', price: '3,000~4,500원', truckPhoto: null },
+  { key: 'snack', name: '간식차', icon: '🍿', price: '4,000~6,000원', truckPhoto: null },
+  { key: 'churros', name: '츄러스', icon: '🥨', price: '4,000~6,000원', truckPhoto: null },
+  { key: 'friedchicken', name: '닭강정', icon: '🍗', price: '10,000~15,000원', truckPhoto: null },
+  { key: 'skewer', name: '닭꼬치', icon: '🍢', price: '3,000~5,000원', truckPhoto: null },
+  { key: 'streetfood', name: '분식', icon: '🍥', price: '3,000~7,000원', truckPhoto: null },
 ]
 
 const eventMenus = [
@@ -72,7 +72,7 @@ export default function MenuSection() {
         </p>
 
         <p className="mt-8 text-ink font-bold text-sm">베스트 메뉴</p>
-        <p className="mt-1 text-body text-xs">아이콘을 탭하면 트럭 사진 · 메뉴 사진 · 단가를 볼 수 있어요</p>
+        <p className="mt-1 text-body text-xs">아이콘을 탭하면 트럭 사진과 단가를 볼 수 있어요</p>
         <div className="mt-3 flex gap-3 overflow-x-auto no-scrollbar">
           {bestMenus.map((item) => (
             <MenuIconButton
@@ -88,10 +88,7 @@ export default function MenuSection() {
           const item = bestMenus.find((m) => m.key === openKey)
           return (
             <div className="mt-3 rounded-card border border-primary/30 bg-canvas p-4">
-              <div className="flex flex-col gap-2">
-                <PhotoSlot label="트럭 사진" src={item.truckPhoto} />
-                <PhotoSlot label="메뉴 사진" src={item.menuPhoto} />
-              </div>
+              <PhotoSlot label="트럭 사진" src={item.truckPhoto} />
               <p className="mt-3 text-primary font-extrabold text-sm">{item.name} · {item.price}</p>
             </div>
           )
