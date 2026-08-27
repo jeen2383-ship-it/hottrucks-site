@@ -95,11 +95,11 @@ export default function MenuSection() {
         })()}
 
         <p className="mt-8 text-ink font-bold text-sm">그 외에도 다양한 메뉴가 준비되어 있습니다</p>
-        <div className="mt-3 flex flex-wrap gap-1">
+        <div className="mt-3 flex flex-wrap gap-[5px]">
           {otherMenus.map((m) => (
             <span
               key={m}
-              className="rounded-pill bg-canvas border border-mute/20 text-body text-[11px] font-semibold px-2 py-1"
+              className="rounded-pill bg-canvas border border-mute/20 text-body text-[11.5px] font-semibold px-2 py-[5px]"
             >
               {m}
             </span>
